@@ -90,6 +90,8 @@ class MasterViewController: UITableViewController {
         //let object = objects[indexPath.row] as NSDate
         
         // 9) replace object.description  with ListOfFavs![indexPath.row]
+        //XCODE 6.1.1 must use optional tag ? 
+        //  cell.textLabel?.text = ListOfFavs![indexPath.row]
         cell.textLabel.text = ListOfFavs![indexPath.row]
         return cell
     }
