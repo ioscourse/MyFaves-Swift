@@ -49,7 +49,7 @@ class MasterViewController: UITableViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    // 5) Comment out func insertNewObject. Select from line finc InsertNewObject to } and use shortcut [Command] + / to comment all lines
+    // 5) Comment out func insertNewObject. Select from line finc InsertNewObject to } and use shortcut command: [Command] [/] to comment all lines
     
     //    func insertNewObject(sender: AnyObject) {
     //        objects.insertObject(NSDate(), atIndex: 0)
@@ -99,7 +99,7 @@ class MasterViewController: UITableViewController {
         return true
     }
     
-    // 10) Comment out override func tableView(tableView
+    // 10) Comment out override func tableView(tableView  - shortcut command: [Command] [/]
     
     //    override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
     //        if editingStyle == .Delete {
