@@ -65,7 +65,7 @@ class MasterViewController: UITableViewController {
                 // 6) replace = objects[indexPath.row] as NSDate
                 //    with    = FavDetails![indexPath.row]
                 let object = FavDetails![indexPath.row]
-                let controller = (segue.destinationViewController as UINavigationController).topViewController as DetailViewController
+                let controller = (segue.destinationViewController as! UINavigationController).topViewController as! DetailViewController
                 controller.detailItem = object
                 controller.navigationItem.leftBarButtonItem = self.splitViewController?.displayModeButtonItem()
                 controller.navigationItem.leftItemsSupplementBackButton = true
@@ -85,14 +85,14 @@ class MasterViewController: UITableViewController {
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as UITableViewCell
+        let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as! UITableViewCell
         // 8) comment out next line
         //let object = objects[indexPath.row] as NSDate
         
         // 9) replace object.description  with ListOfFavs![indexPath.row]
         //XCODE 6.1.1 must use optional tag ? 
         //  cell.textLabel?.text = ListOfFavs![indexPath.row]
-        cell.textLabel.text = ListOfFavs![indexPath.row]
+        cell.textLabel!.text = ListOfFavs![indexPath.row]
         return cell
     }
     

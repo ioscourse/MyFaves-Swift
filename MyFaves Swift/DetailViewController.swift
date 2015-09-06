@@ -31,7 +31,7 @@ class DetailViewController: UIViewController {
             
             // 2) Add code to load WebView
             if let myWebview = WebSite {
-                let url = NSURL(string: detailItem as String)
+                let url = NSURL(string: detailItem as! String)
                 let request = NSURLRequest(URL: url!)
                 myWebview.scalesPageToFit = true
                 myWebview.loadRequest(request)
