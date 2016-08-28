@@ -41,7 +41,7 @@ class MasterViewController: UITableViewController {
         FavDetails = ["http://www.shopcherryvalemall.com/","http://www.bicycling.com", "http://www.google.com"]
         
         let controllers = self.splitViewController!.viewControllers
-        self.detailViewController = controllers[controllers.count-1].topViewController as? DetailViewController
+        self.detailViewController = (controllers[controllers.count-1] as! UINavigationController).topViewController as? DetailViewController
     }
     
     override func didReceiveMemoryWarning() {
@@ -61,7 +61,7 @@ class MasterViewController: UITableViewController {
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "showDetail" {
-            if let indexPath = self.tableView.indexPathForSelectedRow() {
+            if let indexPath = self.tableView.indexPathForSelectedRow {
                 // 6) replace = objects[indexPath.row] as NSDate
                 //    with    = FavDetails![indexPath.row]
                 let object = FavDetails![indexPath.row]
@@ -85,7 +85,7 @@ class MasterViewController: UITableViewController {
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as! UITableViewCell
+        let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) 
         // 8) comment out next line
         //let object = objects[indexPath.row] as NSDate
         
