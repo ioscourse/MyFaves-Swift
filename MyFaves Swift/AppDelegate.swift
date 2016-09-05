@@ -2,8 +2,8 @@
 //  AppDelegate.swift
 //  MyFaves Swift
 //
-//  Created by Charles Konkol on 1/24/15.
-//  Copyright (c) 2015 Rock Valley College. All rights reserved.
+//  Created by Charles Konkol on 9/2016.
+//  Copyright (c) 2016 Rock Valley College. All rights reserved.
 //
 
 import UIKit
