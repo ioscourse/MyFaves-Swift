@@ -1,9 +1,9 @@
 //
 //  MasterViewController.swift
-//  MyFaves
+//  MyFaves2
 //
-//  Created by Charles Konkol on 9/2016.
-//  Copyright (c) 2016 Rock Valley College. All rights reserved.
+//  Created by Charles Konkol on 9/12/16.
+//  Copyright © 2016 Charles Konkol. All rights reserved.
 //
 
 import UIKit
@@ -12,27 +12,22 @@ class MasterViewController: UITableViewController {
     
     var detailViewController: DetailViewController? = nil
     // 1) comment out var objects line
-    //    var objects = NSMutableArray()
+    //var objects = [AnyObject]()
     
     // 2) declare and initialize two arrays
+    
     
     var ListOfFavs:[String]?
     var FavDetails:[String]?
     
-    
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        self.clearsSelectionOnViewWillAppear = false
-        self.preferredContentSize = CGSize(width: 320.0, height: 600.0)
-    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        self.navigationItem.leftBarButtonItem = self.editButtonItem()
-        // 3) Comment out next 2 lines
-        //let addButton = UIBarButtonItem(barButtonSystemItem: .Add, target: self, action: "insertNewObject:")
-        //self.navigationItem.rightBarButtonItem = addButton
+        // 3) Comment out next 3 lines
+        //        self.navigationItem.leftBarButtonItem = self.editButtonItem()
+        
+        //        let addButton = UIBarButtonItem(barButtonSystemItem: .Add, target: self, action: #selector(insertNewObject(_:)))
+        //        self.navigationItem.rightBarButtonItem = addButton
         
         // 4) Add items to 2 arrays
         //Menus
@@ -40,8 +35,15 @@ class MasterViewController: UITableViewController {
         ListOfFavs = ["Mall","Biking", "Google"]
         FavDetails = ["http://www.shopcherryvalemall.com/","http://www.bicycling.com", "http://www.google.com"]
         
-        let controllers = self.splitViewController!.viewControllers
-        self.detailViewController = (controllers[controllers.count-1] as! UINavigationController).topViewController as? DetailViewController
+        if let split = self.splitViewController {
+            let controllers = split.viewControllers
+            self.detailViewController = (controllers[controllers.count-1] as! UINavigationController).topViewController as? DetailViewController
+        }
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        self.clearsSelectionOnViewWillAppear = self.splitViewController!.collapsed
+        super.viewWillAppear(animated)
     }
     
     override func didReceiveMemoryWarning() {
@@ -51,8 +53,9 @@ class MasterViewController: UITableViewController {
     
     // 5) Comment out func insertNewObject. Select from line finc InsertNewObject to } and use shortcut command: [Command] [/] to comment all lines
     
+    
     //    func insertNewObject(sender: AnyObject) {
-    //        objects.insertObject(NSDate(), atIndex: 0)
+    //        objects.insert(NSDate(), atIndex: 0)
     //        let indexPath = NSIndexPath(forRow: 0, inSection: 0)
     //        self.tableView.insertRowsAtIndexPaths([indexPath], withRowAnimation: .Automatic)
     //    }
@@ -85,12 +88,13 @@ class MasterViewController: UITableViewController {
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) 
+        let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath)
+        
         // 8) comment out next line
         //let object = objects[indexPath.row] as NSDate
         
         // 9) replace object.description  with ListOfFavs![indexPath.row]
-        //XCODE 6.1.1 must use optional tag ? 
+        //XCODE 6.1.1 must use optional tag ?
         //  cell.textLabel?.text = ListOfFavs![indexPath.row]
         cell.textLabel!.text = ListOfFavs![indexPath.row]
         return cell
@@ -98,14 +102,12 @@ class MasterViewController: UITableViewController {
     
     override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
         // Return false if you do not want the specified item to be editable.
-        return true
+        return false
     }
-    
     // 10) Comment out override func tableView(tableView  - shortcut command: [Command] [/]
-    
     //    override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
     //        if editingStyle == .Delete {
-    //            objects.removeObjectAtIndex(indexPath.row)
+    //            objects.removeAtIndex(indexPath.row)
     //            tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
     //        } else if editingStyle == .Insert {
     //            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view.

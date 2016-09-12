@@ -1,9 +1,9 @@
 //
 //  DetailViewController.swift
-//  MyFaves
+//  MyFaves2
 //
-//  Created by Charles Konkol on 9/2016.
-//  Copyright (c) 2016 Rock Valley College. All rights reserved.
+//  Created by Charles Konkol on 9/12/16.
+//  Copyright © 2016 Charles Konkol. All rights reserved.
 //
 
 import UIKit
@@ -11,6 +11,7 @@ import UIKit
 class DetailViewController: UIViewController {
     
     @IBOutlet weak var detailDescriptionLabel: UILabel!
+    
     
     @IBOutlet weak var WebSite: UIWebView!
     
@@ -23,12 +24,11 @@ class DetailViewController: UIViewController {
     
     func configureView() {
         // Update the user interface for the detail item.
-        if let detail: AnyObject = self.detailItem {
+        if let detail = self.detailItem {
             // 1) Comment if statement (next 3 lines)
             //            if let label = self.detailDescriptionLabel {
             //                label.text = detail.description
             //            }
-            
             // 2) Add code to load WebView
             if let myWebview = WebSite {
                 let url = NSURL(string: detailItem as! String)
